@@ -1,7 +1,7 @@
 curr_dir="$PWD"
 
 train_epochs=100
-pruner_epochs=2
+pruner_epochs=1
 lemma_dim=25
 word_dim=100
 pos_dim=25
@@ -11,7 +11,7 @@ num_lstm_layers=2
 use_pretrained_embedding=true
 
 trainer="adadelta"
-formalisms="dm pas psd"
+formalisms="dm"
 formalism="dm"
 language="english"
 
@@ -30,17 +30,17 @@ file_test=${curr_dir}/../semeval2015_data/${formalism}/data/english/english_id_$
 file_model=${curr_dir}/model/${formalism}.${trainer}.lstm${lstm_dim}.layer${num_lstm_layers}.h${mlp_dim}.drop${word_dropout_rate}.model 
 file_pruner_model=${curr_dir}/model/${language}_${formalism}.pruner.model
 file_prediction=${curr_dir}/prediction/${formalism}.${trainer}.lstm${lstm_dim}.layer${num_lstm_layers}.h${mlp_dim}.drop${word_dropout_rate}.pred
-log_file=${curr_dir}/log_test/${formalism}.${trainer}.lstm${lstm_dim}.layer${num_lstm_layers}.h${mlp_dim}.drop${word_dropout_rate}.log
+log_file=${curr_dir}/log/${formalism}.${trainer}.lstm${lstm_dim}.layer${num_lstm_layers}.h${mlp_dim}.drop${word_dropout_rate}.log
 
 nohup \
-${parser_file} --test  --evaluate \
+${parser_file} --test --evaluate \
 --dynet_mem 512 \
 --dynet_seed 823632965 \
 --dynet_weight_decay 1e-6 \
 --train_epochs=${train_epochs}  \
---pruner_epochs=${[runer_epochs} \ 
+--pruner_epochs=${pruner_epochs} \
 --file_train=${file_train} \
---file_test=${file_dev}  \
+--file_test=${file_test} \
 --srl_labeled=true \
 --srl_deterministic_labels=true \
 --srl_use_dependency_syntactic_features=false \
@@ -61,8 +61,8 @@ ${parser_file} --test  --evaluate \
 --srl_file_format=sdp \
 --use_pretrained_embedding=${use_pretrained_embedding} \
 --file_pretrained_embedding=${file_pretrained_embedding} \
---lemma_dim=${word_dim} \
---word_dim=${pre_word_dim} \
+--lemma_dim=${lemma_dim} \
+--word_dim=${word_dim} \
 --pos_dim=${pos_dim} \
 --lstm_dim=${lstm_dim} \
 --mlp_dim=${mlp_dim} \
@@ -76,4 +76,5 @@ ${parser_file} --test  --evaluate \
 --file_model=${file_model} \
 --file_prediction=${file_prediction} \
 > ${log_file} &
+
 
