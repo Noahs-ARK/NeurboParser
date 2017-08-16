@@ -15,6 +15,9 @@ The following software are needed to build the parser:
 
 ## Checking out the project for the first time
 
+  git clone https://github.com/Noahs-ARK/NeurboParser.git
+  cd NeurboParser
+
 The first time you clone the repository, you need to sync the `dynet/` submodule.
 
     git clone https://github.com/clab/dynet.git
@@ -36,11 +39,11 @@ Follow the instructions under './semeval2015_data' to prepare the data. You can 
 	
 ## To replicate the results
 
-You will first need to put 100-dimensional pretrained GloVe embedding [3] under 'embedding/'. Default hyperparameter values in the scripts are used in [1].
+You will first need to put 100-dimensional pretrained GloVe embedding [3] under 'embedding/'. Default hyperparameters in the scripts are used in [1].
 	
-The current version of DyNet uses some difference strategies to deal with numerical issues from older versions. Based on our expericence, we expect the current parser has slightly better evaluation numbers on benchmark datasets than those describsed in [1].
+The current version of DyNet uses some difference strategies to deal with numerical issues from older versions. Based on our experience, we expect the current parser has slightly better evaluation numbers on benchmark datasets than those described in [1].
 	
-We are still working on adopting new version of DyNet for the Multitask models.  
+We are still working on adopting new version of DyNet for the multitask models.  
 	
 ## References
 	
@@ -55,3 +58,11 @@ In Proceedings of the Annual Meeting of the Association for Computational Lingui
 [3] Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. 
 GloVe: Global Vectors for Word Representation. 
 In Proceedings of the Empirical Methods in Natural Language Processing (EMNLP).
+
+[4] André F. T. Martins and Mariana S. C. Almeida. 2014.
+Priberam: A Turbo Semantic Parser with Second Order Features.
+In Proceedubgs of the International Workshop on Semantic Evaluation (SemEval), task 8: Broad-Coverage Semantic Dependency Parsing.
+
+[5] Mariana S. C. Almeida and André F. T. Martins. 2015.
+Lisbon: Evaluating TurboSemanticParser on Multiple Languages and Out-of-Domain Data.
+In Proceedings of International Workshop on Semantic Evaluation (SemEval'15), task 18: Broad Coverage Semantic Dependency Parsing.
