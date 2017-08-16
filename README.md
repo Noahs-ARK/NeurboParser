@@ -41,9 +41,9 @@ Follow the instructions under './semeval2015_data' to prepare the data. You can 
 
 You will first need to put 100-dimensional pretrained GloVe embedding [3] under 'embedding/'. Default hyperparameters in the scripts are used in [1].
 	
-The current version of DyNet uses some difference strategies to deal with numerical issues from older versions. Based on our experience, we expect the current parser has slightly better evaluation numbers on benchmark datasets than those described in [1].
-	
-We are still working on adopting new version of DyNet for the multitask models.  
+The current version of DyNet uses some different strategies to deal with numerical issues than the older version we used in [1]. Based on our experience, we expect the current parser to have slightly better evaluation numbers on benchmark datasets than those described in [1].
+
+We are still working on adapting the multitask models to use the new version of DyNet.
 	
 ## References
 	
