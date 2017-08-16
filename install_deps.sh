@@ -61,6 +61,18 @@ make
 cp ad3/libad3.a "${LOCAL_DEPS_DIR}/lib"
 mkdir -p "${LOCAL_DEPS_DIR}/include/ad3"
 cp -r ad3/*.h "${LOCAL_DEPS_DIR}/include/ad3"
-cp -r Eigen "${LOCAL_DEPS_DIR}/include"
 cd ..
+
+# Install eigen
+echo ""
+echo "Installing Eigen..."
+rm -rf eigen
+hg clone https://bitbucket.org/eigen/eigen/ -r 346ecdb
+cd eigen
+mkdir -p build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX="${LOCAL_DEPS_DIR}"
+make install
+cd ../..
+rm -rf eigen
 echo "Done."
