@@ -117,7 +117,13 @@ void SemanticPipe::LoadNeuralModel() {
     load_dynet_model(file_path, model_);
     // temporary solution to weight_decay issue in dynet
     // TODO: save the weight_decay along with the model.
-    model_->get_weight_decay().update_weight_decay(semantic_options->num_updates_);
+//    model_->get_weight_decay().update_weight_decay(semantic_options->num_updates_);
+    for (int i = 0;i < semantic_options->num_updates_; ++ i) {
+        model_->get_weight_decay().update_weight_decay();
+        if (model_->get_weight_decay().parameters_need_rescaled())
+            model_->get_weight_decay().reset_weight_decay();
+    }
+//    LOG(INFO) <<model_->get_weight_decay().current_weight_decay();
 }
 
 void SemanticPipe::LoadPruner() {
@@ -144,7 +150,12 @@ void SemanticPipe::LoadPruner() {
     load_dynet_model(file_path, pruner_model_);
     // temporary solution to weight_decay issue in dynet
     // TODO: save the weight_decay along with the model.
-    pruner_model_->get_weight_decay().update_weight_decay(semantic_options->pruner_num_updates_);
+//    pruner_model_->get_weight_decay().update_weight_decay(semantic_options->pruner_num_updates_);
+    for (int i = 0;i < semantic_options->pruner_num_updates_; ++ i) {
+        pruner_model_->get_weight_decay().update_weight_decay();
+        if (pruner_model_->get_weight_decay().parameters_need_rescaled())
+            pruner_model_->get_weight_decay().reset_weight_decay();
+    }
 }
 
 void SemanticPipe::PreprocessData() {
