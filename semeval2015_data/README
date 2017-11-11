@@ -20,6 +20,8 @@ test/en.ood.pas.sdp
 test/en.ood.psd.sdp
 test/en.ood.sb.bn.cpn
 
+(the *.cpn files can be found in the open/ subdirectories.)
+
 2) Type:
 
 cd scripts
@@ -27,3 +29,7 @@ cd scripts
 
 This will create folders "dm", "pas", "psd" where the train/dev/test splits
 will be stored.
+
+3) To train and test, build the parser (explained in the main README) and run the `train.sh` and `test.sh` scripts in the `NeurboParser` and `MeurboParser` directories as desired.
+
+It should take a few hours to train and run the semantic parsers.

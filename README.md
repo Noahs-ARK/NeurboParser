@@ -18,17 +18,17 @@ The following software are needed to build the parser:
   git clone https://github.com/Noahs-ARK/NeurboParser.git
   cd NeurboParser
 
-The first time you clone the repository, you need to sync the `dynet/` submodule.
+The first time you clone the repository, you need to initialize the `dynet/` submodule.
 
-    git clone https://github.com/clab/dynet.git
+    git submodule update --init
 
-## To fetch all the required libs:
+## To fetch all the other required libs (except boost):
 	
 	./install_deps.sh
 
 ## To build the parser
 	
-	mkdir -p NeurboParer/build
+	mkdir -p NeurboParser/build
 	cd NeurboParser/build
 	cmake ..; make -j4
 	cd ../..

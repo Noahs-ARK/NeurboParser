@@ -1,0 +1,3 @@
+[submodule "dynet"]
+	path = dynet
+	url = https://github.com/clab/dynet.git
