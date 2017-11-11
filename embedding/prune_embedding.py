@@ -7,7 +7,8 @@ Created on Sat Nov  5 20:44:45 2016
 import io
 UNK = '__UNK__'
 def build_vocab(base_dir = '../semeval2015_data/dm/data/english'):
-    files = ['train', 'dev', 
+    files = ['english_dm_augmented_train.sdp',
+             'english_dm_augmented_dev.sdp',
              'english_id_dm_augmented_test.sdp', 
              'english_ood_dm_augmented_test.sdp'
              ]
@@ -26,9 +27,9 @@ def build_vocab(base_dir = '../semeval2015_data/dm/data/english'):
     return word2idx
 
 def prune_embedding(infile = '.', word2idx = None):
-    path = '%s/glove.100' % infile
-    fout = io.open(path + '.pruned', 'w', encoding = 'utf-8')
-    n = 0 
+    path = '%s/glove.6B.100d.txt' % infile
+    fout = io.open('%s/glove.100.pruned' % infile, 'w', encoding = 'utf-8')
+    n = 0
     with io.open(path, 'r', encoding = 'utf-8') as fin:
         for line in fin:
             ws = line.strip().split()
@@ -42,10 +43,10 @@ def prune_embedding(infile = '.', word2idx = None):
             o_line = ' '.join(ws)
             fout.write(o_line + u'\n')
             n += 1
-    print n
+    print 'Number of embeddings in vocabulary: %d' % n
     fout.close()
               
 if __name__ == '__main__':
-    base_dir = '../semeval2015_data_unaligned/dm/data/english'
+    base_dir = '../semeval2015_data/dm/data/english'
     word2idx = build_vocab(base_dir)
     prune_embedding(infile = '.', word2idx = word2idx)
