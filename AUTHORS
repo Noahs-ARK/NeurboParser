@@ -1,8 +1,0 @@
-Authors of NeurboParser.
-=======================
-NeurboParser is designed by Hao Peng, Sam Thomson, and Noah A. Smith, 
-and is implemented based on TurboParser by André Martins.
-The decoder of NeurboParser is based on the AD3 library, written by André Martins.
-It uses the Eigen template library for linear algebra,
-a project started by Benoît Jacob and Gaël Guennebaud; and the Google libraries 
-glog and gflags, for logging and commandline flags processing.

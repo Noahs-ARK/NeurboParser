@@ -1,8 +1,6 @@
 #!/bin/bash
-set -euo pipefail  # strict mode
-IFS=$'\n\t'
 
-BASE_DIR=$(cd $(dirname "$0"); pwd)
+BASE_DIR=${PWD}
 LOCAL_DEPS_DIR="${BASE_DIR}/deps/local"
 
 rm -rf "${LOCAL_DEPS_DIR}"
@@ -37,17 +35,9 @@ echo "Done."
 # Install glog.
 echo ""
 echo "Installing glog..."
-tar -zxf glog-0.3.2.tar.gz
-cd glog-0.3.2
-if ${RUN_AUTOTOOLS}
-then
-    rm missing
-    aclocal
-    autoconf
-    automake --add-missing
-fi
-./configure --prefix=${LOCAL_DEPS_DIR} --with-gflags=${LOCAL_DEPS_DIR} \
-  && make && make install
+git clone https://github.com/google/glog
+cd glog
+./autogen.sh && ./configure  --prefix=${LOCAL_DEPS_DIR} && make && make install
 cd ..
 echo "Done."
 
